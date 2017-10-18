@@ -10,16 +10,17 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    @IBOutlet weak var textFieldUsername: UITextField!
+    
+    @IBOutlet weak var textFieldPassword: UITextField!
+    
+    @IBAction func loginTouched(_ sender: UIButton) {
+        if let username = textFieldUsername.text,
+            let password = textFieldPassword.text {
+            if LoginViewModel().login(username: username, password: password) {
+                self.navigationController?.pushViewController(CatViewController(), animated: true)
+            }
+        }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
 }
 
