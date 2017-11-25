@@ -10,13 +10,11 @@ import UIKit
 import Rswift
 
 class HomeViewController: UIViewController {
-    var viewModel = HomeViewModel()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+    var viewModel: HomeViewModel? = nil
+    
+    @IBOutlet weak var table: UITableView!
+    
+    private let momentsService = MomentsService()
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -33,13 +31,37 @@ class HomeViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
+        
+        momentsService.performMoments(success: performMomentsSuccess, failure: performMomentsFailure)
+    }
+    
+    func performMomentsSuccess(moments: Moments) {
+        let homeCellModels = moments.cats.map { (cat) -> HomeCellModel in
+            HomeCellModel(cat: cat.cat, message: cat.message, timestamp: cat.timestamp)
+        }
+        
+        viewModel = HomeViewModel(models: homeCellModels)
+        
+        DispatchQueue.main.async {
+            self.table.reloadData()
+        }
+    }
+    
+    func performMomentsFailure(apiError: APIError) {
+        
+    }
 }
 
 extension HomeViewController: UITableViewDataSource {
+   
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.count
+        return (viewModel?.count) ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -47,9 +69,9 @@ extension HomeViewController: UITableViewDataSource {
             fatalError("Could not dequeue HomeTableViewCell")
         }
         
-        
-        
-//        let cellViewModel = viewModel.getCellViewModel(index: indexPath.count)
+        if let cellViewModel = viewModel?.getCellViewModel(index: indexPath.item) {
+            cell.updateContent(viewModel: cellViewModel)
+        }
         
         return cell
     }

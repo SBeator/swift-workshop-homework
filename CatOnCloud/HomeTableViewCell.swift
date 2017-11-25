@@ -10,6 +10,10 @@ import UIKit
 
 class HomeTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var labelCat: UILabel!
+    @IBOutlet weak var labelTime: UILabel!
+    @IBOutlet weak var labelMessage: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,5 +25,10 @@ class HomeTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    
+    public func updateContent(viewModel: HomeCellViewModel) {
+        
+        labelCat.text = viewModel.cat
+        labelTime.text = viewModel.time
+        labelMessage.text = viewModel.message
+    }
 }

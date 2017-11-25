@@ -8,14 +8,22 @@
 
 import Foundation
 
-let cellModel = HomeCellModel(cat: "Miao",
+let cellModel1 = HomeCellModel(cat: "Miao",
                               message: "Miao Miao",
                               timestamp: "2017-10-23T02:03:21.3232")
 
-let mockModels = [cellModel, cellModel]
+let cellModel2 = HomeCellModel(cat: "Cat",
+                              message: "This is a cat",
+                              timestamp: "2017-10-23T02:03:21.3232")
+
+let mockModels = [cellModel1, cellModel2]
 
 class HomeViewModel {
-    var homeModels: [HomeCellModel] = mockModels
+    var homeModels: [HomeCellModel]
+    
+    init(models: [HomeCellModel]) {
+        self.homeModels = models
+    }
     
     var count: Int {
         get {

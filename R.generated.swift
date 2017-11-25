@@ -21,8 +21,17 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.file` struct is generated, and contains static references to 0 files.
+  /// This `R.file` struct is generated, and contains static references to 1 files.
   struct file {
+    /// Resource file `Info.plist`.
+    static let infoPlist = Rswift.FileResource(bundle: R.hostingBundle, name: "Info", pathExtension: "plist")
+    
+    /// `bundle.url(forResource: "Info", withExtension: "plist")`
+    static func infoPlist(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.infoPlist
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
     fileprivate init() {}
   }
   
@@ -64,8 +73,32 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.segue` struct is generated, and contains static references to 0 view controllers.
+  /// This `R.segue` struct is generated, and contains static references to 1 view controllers.
   struct segue {
+    /// This struct is generated for `MainScreenViewController`, and contains static references to 2 segues.
+    struct mainScreenViewController {
+      /// Segue identifier `homePageSegue`.
+      static let homePageSegue: Rswift.StoryboardSegueIdentifier<UIKit.UIStoryboardSegue, MainScreenViewController, UIKit.UITabBarController> = Rswift.StoryboardSegueIdentifier(identifier: "homePageSegue")
+      /// Segue identifier `loginSegue`.
+      static let loginSegue: Rswift.StoryboardSegueIdentifier<UIKit.UIStoryboardSegue, MainScreenViewController, LoginViewController> = Rswift.StoryboardSegueIdentifier(identifier: "loginSegue")
+      
+      /// Optionally returns a typed version of segue `homePageSegue`.
+      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
+      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
+      static func homePageSegue(segue: UIKit.UIStoryboardSegue) -> Rswift.TypedStoryboardSegueInfo<UIKit.UIStoryboardSegue, MainScreenViewController, UIKit.UITabBarController>? {
+        return Rswift.TypedStoryboardSegueInfo(segueIdentifier: R.segue.mainScreenViewController.homePageSegue, segue: segue)
+      }
+      
+      /// Optionally returns a typed version of segue `loginSegue`.
+      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
+      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
+      static func loginSegue(segue: UIKit.UIStoryboardSegue) -> Rswift.TypedStoryboardSegueInfo<UIKit.UIStoryboardSegue, MainScreenViewController, LoginViewController>? {
+        return Rswift.TypedStoryboardSegueInfo(segueIdentifier: R.segue.mainScreenViewController.loginSegue, segue: segue)
+      }
+      
+      fileprivate init() {}
+    }
+    
     fileprivate init() {}
   }
   
@@ -131,14 +164,13 @@ struct _R: Rswift.Validatable {
     }
     
     struct main: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
-      typealias InitialController = UIKit.UITabBarController
+      typealias InitialController = UIKit.UINavigationController
       
       let bundle = R.hostingBundle
       let name = "Main"
       
       static func validate() throws {
         if UIKit.UIImage(named: "login_head") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'login_head' is used in storyboard 'Main', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "cat_hero_banner") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'cat_hero_banner' is used in storyboard 'Main', but couldn't be loaded.") }
       }
       
       fileprivate init() {}
