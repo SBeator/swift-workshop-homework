@@ -1,5 +1,5 @@
 //
-//  MomentsService.swift
+//  CatDetailsService.swift
 //  CatOnCloud
 //
 //  Created by Xingxin Zeng  on 25/11/2017.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-class MomentsService {
+class CatDetailsService{
     private let urlSessionConfiguration = URLSessionConfiguration.default
-    private let urlMoments = URL(string: "http://localhost:8080/catnip/moment/")!.absoluteURL
-    private let momentsTranslator = MomentsTranslator()
+    private let catDetailsTranslator = CatDetailsTranslator()
     
-    public func performMoments(success: @escaping (Moments) -> Void, failure: @escaping (APIError) -> Void) {
-        
-        var request = URLRequest(url: urlMoments)
+    public func performMoments(id: String, success: @escaping (CatDetails) -> Void, failure: @escaping (APIError) -> Void) {
+        let urlCatDetails = URL(string: "http://localhost:8080/catnip/moment/" + id)!.absoluteURL
+
+        var request = URLRequest(url: urlCatDetails)
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
@@ -23,10 +23,10 @@ class MomentsService {
         
         let task = session.dataTask(with: request) { (data, response, error) in
             
-            if let moments = data.flatMap(self.momentsTranslator.translate) {
-                success(moments)
+            if let catDetails = data.flatMap(self.catDetailsTranslator.translate) {
+                success(catDetails)
             } else {
-                failure(APIError(message: "moments parse error"))
+                failure(APIError(message: "cat details parse error"))
             }
         }
         

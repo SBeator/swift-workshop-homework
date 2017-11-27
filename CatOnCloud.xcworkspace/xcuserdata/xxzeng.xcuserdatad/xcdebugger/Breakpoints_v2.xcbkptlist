@@ -83,5 +83,69 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CatOnCloud/viewmodel/HomeTableViewCell.swift"
+            timestampString = "533311004.531797"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "updateImage(imageView:relativeImageUrl:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in CatOnCloud.HomeTableViewCell.updateImage(imageView: __ObjC.UIImageView, imageUrl: Swift.String) -&gt; ()"
+                  moduleName = "CatOnCloud"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xxzeng/Documents/mysrc/IOS-learning/Workshop/CatOnCloud/CatOnCloud/viewmodel/HomeTableViewCell.swift"
+                  timestampString = "533308095.583141"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "341">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 () -&gt; () in CatOnCloud.HomeTableViewCell.updateImage(imageView: __ObjC.UIImageView, imageUrl: Swift.String) -&gt; ()"
+                  moduleName = "CatOnCloud"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xxzeng/Documents/mysrc/IOS-learning/Workshop/CatOnCloud/CatOnCloud/viewmodel/HomeTableViewCell.swift"
+                  timestampString = "533308095.585416"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "50"
+                  endingLineNumber = "50"
+                  offsetFromSymbolStart = "26">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CatOnCloud/viewmodel/HomeTableViewCell.swift"
+            timestampString = "533311004.531876"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "updateContent(viewModel:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

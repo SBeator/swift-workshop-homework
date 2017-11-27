@@ -9,7 +9,10 @@
 import Foundation
 
 struct HomeCellModel {
+    var id: String
     var cat: String
     var message: String
     var timestamp: String
+    var avatar: CatImage
+    var thumbs: [CatImage]
 }

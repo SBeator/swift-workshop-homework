@@ -89,6 +89,26 @@
       "idiom" : "ios-marketing",
       "size" : "1024x1024",
       "scale" : "1x"
+    },
+    {
+      "filename" : "heart.jpg",
+      "unassigned" : true
+    },
+    {
+      "filename" : "heart@2x.jpg",
+      "unassigned" : true
+    },
+    {
+      "filename" : "twitter.png",
+      "unassigned" : true
+    },
+    {
+      "filename" : "twitter@2x.png",
+      "unassigned" : true
+    },
+    {
+      "filename" : "twitter@3x.png",
+      "unassigned" : true
     }
   ],
   "info" : {

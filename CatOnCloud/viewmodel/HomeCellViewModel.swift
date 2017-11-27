@@ -15,6 +15,12 @@ class HomeCellViewModel {
         self.model = model
     }
     
+    var id: String {
+        get {
+            return model.id
+        }
+    }
+    
     var cat: String {
         get {
             return model.cat
@@ -27,6 +33,18 @@ class HomeCellViewModel {
         }
     }
     
+    var avatar: CatImage {
+        get {
+            return model.avatar
+        }
+    }
+    
+    var thumbs: [CatImage] {
+        get {
+            return model.thumbs
+        }
+    }
+    
     var time: String {
         get {
             return getTime(timestamp: model.timestamp)
@@ -34,6 +52,12 @@ class HomeCellViewModel {
     }
     
     func getTime(timestamp: String) -> String {
-        return "5 mins ago"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyy-MM-d'T'HH:mm:ss.SSS'Z'"
+        let date = dateFormatter.date(from: timestamp)
+        
+        dateFormatter.timeStyle = DateFormatter.Style.medium
+        
+        return dateFormatter.string(from: date!)
     }
 }

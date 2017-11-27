@@ -15,6 +15,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var table: UITableView!
     
     private let momentsService = MomentsService()
+    private var selectedCellViewModel: HomeCellViewModel?
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -42,7 +43,7 @@ class HomeViewController: UIViewController {
     
     func performMomentsSuccess(moments: Moments) {
         let homeCellModels = moments.cats.map { (cat) -> HomeCellModel in
-            HomeCellModel(cat: cat.cat, message: cat.message, timestamp: cat.timestamp)
+            HomeCellModel(id: cat.id, cat: cat.cat, message: cat.message, timestamp: cat.timestamp, avatar: cat.avatar, thumbs: cat.thumbs)
         }
         
         viewModel = HomeViewModel(models: homeCellModels)
@@ -55,9 +56,15 @@ class HomeViewController: UIViewController {
     func performMomentsFailure(apiError: APIError) {
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? CatViewController {
+            vc.selectedCellViewModel = self.selectedCellViewModel
+        }
+    }
 }
 
-extension HomeViewController: UITableViewDataSource {
+extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -74,5 +81,10 @@ extension HomeViewController: UITableViewDataSource {
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedCellViewModel = viewModel?.getCellViewModel(index: indexPath.item)
+        performSegue(withIdentifier: "catPageSegue", sender: self)
     }
 }

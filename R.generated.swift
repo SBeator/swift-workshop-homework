@@ -40,21 +40,63 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 2 images.
+  /// This `R.image` struct is generated, and contains static references to 8 images.
   struct image {
     /// Image `cat_hero_banner`.
     static let cat_hero_banner = Rswift.ImageResource(bundle: R.hostingBundle, name: "cat_hero_banner")
+    /// Image `fish`.
+    static let fish = Rswift.ImageResource(bundle: R.hostingBundle, name: "fish")
+    /// Image `heart`.
+    static let heart = Rswift.ImageResource(bundle: R.hostingBundle, name: "heart")
     /// Image `login_head`.
     static let login_head = Rswift.ImageResource(bundle: R.hostingBundle, name: "login_head")
+    /// Image `polygon`.
+    static let polygon = Rswift.ImageResource(bundle: R.hostingBundle, name: "polygon")
+    /// Image `star`.
+    static let star = Rswift.ImageResource(bundle: R.hostingBundle, name: "star")
+    /// Image `twitter`.
+    static let twitter = Rswift.ImageResource(bundle: R.hostingBundle, name: "twitter")
+    /// Image `wechat`.
+    static let wechat = Rswift.ImageResource(bundle: R.hostingBundle, name: "wechat")
     
     /// `UIImage(named: "cat_hero_banner", bundle: ..., traitCollection: ...)`
     static func cat_hero_banner(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.cat_hero_banner, compatibleWith: traitCollection)
     }
     
+    /// `UIImage(named: "fish", bundle: ..., traitCollection: ...)`
+    static func fish(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.fish, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "heart", bundle: ..., traitCollection: ...)`
+    static func heart(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.heart, compatibleWith: traitCollection)
+    }
+    
     /// `UIImage(named: "login_head", bundle: ..., traitCollection: ...)`
     static func login_head(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.login_head, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "polygon", bundle: ..., traitCollection: ...)`
+    static func polygon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.polygon, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "star", bundle: ..., traitCollection: ...)`
+    static func star(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.star, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "twitter", bundle: ..., traitCollection: ...)`
+    static func twitter(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.twitter, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "wechat", bundle: ..., traitCollection: ...)`
+    static func wechat(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.wechat, compatibleWith: traitCollection)
     }
     
     fileprivate init() {}
@@ -73,8 +115,23 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.segue` struct is generated, and contains static references to 1 view controllers.
+  /// This `R.segue` struct is generated, and contains static references to 2 view controllers.
   struct segue {
+    /// This struct is generated for `HomeViewController`, and contains static references to 1 segues.
+    struct homeViewController {
+      /// Segue identifier `catPageSegue`.
+      static let catPageSegue: Rswift.StoryboardSegueIdentifier<UIKit.UIStoryboardSegue, HomeViewController, CatViewController> = Rswift.StoryboardSegueIdentifier(identifier: "catPageSegue")
+      
+      /// Optionally returns a typed version of segue `catPageSegue`.
+      /// Returns nil if either the segue identifier, the source, destination, or segue types don't match.
+      /// For use inside `prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)`.
+      static func catPageSegue(segue: UIKit.UIStoryboardSegue) -> Rswift.TypedStoryboardSegueInfo<UIKit.UIStoryboardSegue, HomeViewController, CatViewController>? {
+        return Rswift.TypedStoryboardSegueInfo(segueIdentifier: R.segue.homeViewController.catPageSegue, segue: segue)
+      }
+      
+      fileprivate init() {}
+    }
+    
     /// This struct is generated for `MainScreenViewController`, and contains static references to 2 segues.
     struct mainScreenViewController {
       /// Segue identifier `homePageSegue`.
@@ -170,7 +227,13 @@ struct _R: Rswift.Validatable {
       let name = "Main"
       
       static func validate() throws {
+        if UIKit.UIImage(named: "fish") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'fish' is used in storyboard 'Main', but couldn't be loaded.") }
         if UIKit.UIImage(named: "login_head") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'login_head' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "star") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'star' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "heart") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'heart' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "polygon") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'polygon' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "twitter") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'twitter' is used in storyboard 'Main', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "wechat") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'wechat' is used in storyboard 'Main', but couldn't be loaded.") }
       }
       
       fileprivate init() {}
