@@ -15,6 +15,7 @@ class HomeViewController: UIViewController {
                             "/image/banner2.jpg",
                             "/image/banner3.jpg",
                             ]
+    var currentViewPage = 0
     
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var viewBanner: ViewPager!
@@ -44,9 +45,20 @@ class HomeViewController: UIViewController {
         // Do any additional setup after loading the view.
         viewBanner.dataSource = self;
         // Do any additional setup after loading the view, typically from a nib.
-        viewBanner.animationNext()
+        bannerAnimate()
         
         momentsService.performMoments(success: performMomentsSuccess, failure: performMomentsFailure)
+    }
+    
+    func bannerAnimate() {
+        viewBanner.scrollToPage(index: currentViewPage)
+        
+        currentViewPage = currentViewPage + 1
+        if (currentViewPage > bannerImageUrls.count) {
+            currentViewPage = 0
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(1*NSEC_PER_SEC))/Double(NSEC_PER_SEC), execute: self.bannerAnimate)
     }
     
     func performMomentsSuccess(moments: Moments) {

@@ -24,11 +24,11 @@ class MainScreenViewController: UIViewController {
     }
 
     private func performLogin() {
-//        if viewModel.shouldPerformLogin {
-//            performSegue(withIdentifier: "loginSegue", sender: self)
-//        } else {
+        if viewModel.shouldPerformLogin {
+            performSegue(withIdentifier: "loginSegue", sender: self)
+        } else {
             performSegue(withIdentifier: "homePageSegue", sender: self)
-//        }
+        }
     }
     
     private func loginSuccess(loginKey: LoginKey) {
