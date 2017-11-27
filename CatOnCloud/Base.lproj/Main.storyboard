@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="login_head" translatesAutoresizingMaskIntoConstraints="NO" id="oUf-01-v90">
-                                <rect key="frame" x="80" y="60" width="216.5" height="53"/>
+                                <rect key="frame" x="73" y="60" width="231" height="53"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="231" id="WZn-ku-bOQ"/>
                                 </constraints>
@@ -57,7 +57,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XNA-vg-2lC">
-                                <rect key="frame" x="79.5" y="389" width="216.5" height="21"/>
+                                <rect key="frame" x="72.5" y="389" width="231" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.59585184010152292" green="0.59585184010152292" blue="0.59585184010152292" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -138,22 +138,18 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" pagingEnabled="YES" delaysContentTouches="NO" canCancelContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxe-bn-YcI">
-                                            <rect key="frame" x="0.0" y="0.0" width="700" height="200"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <subviews>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="login_head" translatesAutoresizingMaskIntoConstraints="NO" id="wbr-5N-4XQ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="350" height="200"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </imageView>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="login_head" translatesAutoresizingMaskIntoConstraints="NO" id="3qA-P2-cBk">
-                                                    <rect key="frame" x="350" y="0.0" width="350" height="200"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </imageView>
-                                            </subviews>
-                                        </scrollView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oao-Mn-YAW" customClass="ViewPager" customModule="CatOnCloud" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="oao-Mn-YAW" firstAttribute="height" secondItem="mTH-14-Mec" secondAttribute="height" id="6Zd-ve-T1W"/>
+                                        <constraint firstItem="oao-Mn-YAW" firstAttribute="width" secondItem="mTH-14-Mec" secondAttribute="width" id="alS-MI-JvX"/>
+                                        <constraint firstItem="oao-Mn-YAW" firstAttribute="leading" secondItem="mTH-14-Mec" secondAttribute="leading" id="m2M-Et-MCw"/>
+                                        <constraint firstItem="oao-Mn-YAW" firstAttribute="top" secondItem="mTH-14-Mec" secondAttribute="top" id="suD-Ti-rFF"/>
+                                    </constraints>
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeTableVIewCell" rowHeight="200" id="9hP-g0-X34" customClass="HomeTableViewCell" customModule="CatOnCloud" customModuleProvider="target">
@@ -251,6 +247,7 @@
                     <tabBarItem key="tabBarItem" title="Cats nearby" image="twitter" id="jUh-Lx-VHQ"/>
                     <connections>
                         <outlet property="table" destination="bu9-A5-C5m" id="wgd-Iq-Muz"/>
+                        <outlet property="viewBanner" destination="oao-Mn-YAW" id="wOD-9h-ZBp"/>
                         <segue destination="KVM-HH-r9f" kind="show" identifier="catPageSegue" id="Ke2-bx-bzb"/>
                     </connections>
                 </viewController>

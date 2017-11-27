@@ -18,6 +18,8 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var imageThumb2: UIImageView!
     @IBOutlet weak var imageThumb3: UIImageView!
     
+    var imageLoader = ImageLoader()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -35,7 +37,7 @@ class HomeTableViewCell: UITableViewCell {
         labelTime.text = viewModel.time
         labelMessage.text = viewModel.message
         
-        self.updateImage(imageView: imageAvatar, relativeImageUrl: viewModel.avatar.image)
+        self.imageLoader.updateImage(imageView: imageAvatar, image: viewModel.avatar)
         let imageThumbs = [imageThumb1, imageThumb2, imageThumb3]
         
         for index in 0...2 {

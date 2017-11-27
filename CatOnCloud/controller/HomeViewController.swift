@@ -11,8 +11,13 @@ import Rswift
 
 class HomeViewController: UIViewController {
     var viewModel: HomeViewModel? = nil
+    var bannerImageUrls = [ "/image/banner1.jpg",
+                            "/image/banner2.jpg",
+                            "/image/banner3.jpg",
+                            ]
     
     @IBOutlet weak var table: UITableView!
+    @IBOutlet weak var viewBanner: ViewPager!
     
     private let momentsService = MomentsService()
     private var selectedCellViewModel: HomeCellViewModel?
@@ -37,6 +42,9 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        viewBanner.dataSource = self;
+        // Do any additional setup after loading the view, typically from a nib.
+        viewBanner.animationNext()
         
         momentsService.performMoments(success: performMomentsSuccess, failure: performMomentsFailure)
     }
@@ -87,4 +95,28 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         self.selectedCellViewModel = viewModel?.getCellViewModel(index: indexPath.item)
         performSegue(withIdentifier: "catPageSegue", sender: self)
     }
+}
+
+extension HomeViewController: ViewPagerDataSource{
+    func numberOfItems(viewPager:ViewPager) -> Int {
+        return bannerImageUrls.count;
+    }
+    
+    func viewAtIndex(viewPager:ViewPager, index:Int, view:UIView?) -> UIView {
+        var newView = view;
+        if(newView == nil){
+            newView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height:  self.view.frame.height))
+            
+            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: (newView?.frame.width)!, height:  (newView?.frame.height)!))
+            ImageLoader().updateImage(imageView: imageView, image: bannerImageUrls[index])
+            newView?.addSubview(imageView)
+        }
+        
+        return newView!
+    }
+    
+    func didSelectedItem(index: Int) {
+        print("select index \(index)")
+    }
+    
 }
